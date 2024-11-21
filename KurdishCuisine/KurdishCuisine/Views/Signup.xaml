@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="KurdishCuisine.Views.Signup"
+    xmlns:vm="clr-namespace:KurdishCuisine.ViewModels"
+    >
+    <ContentPage.BindingContext>
+        <vm:SignupViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" Margin="0,50,0,0">
+            <Frame>
+                <StackLayout>
+                    <Label Text="Username"/>
+                    <Entry/>
+                    <Label Text="Email"/>
+                    <Entry/>
+                    <Label Text="Password"/>
+                    <Entry IsPassword="True"/>
+                    <Label Text="Confirm Passwsord"/>
+                    <Entry IsPassword='True'/>
+                </StackLayout>
+            </Frame>
+            <Button Text="Signup"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

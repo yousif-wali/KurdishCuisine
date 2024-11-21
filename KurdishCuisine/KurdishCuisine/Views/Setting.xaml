@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="KurdishCuisine.Views.Setting"
+    xmlns:vm="clr-namespace:KurdishCuisine.ViewModels"
+    Title="Setting"
+    >
+   <ContentPage.ToolbarItems>
+        <!-- Add button in the toolbar -->
+        <ToolbarItem Text="Post" IconImageSource="add_icon.png" Clicked="ToolbarItem_Clicked"/>
+   </ContentPage.ToolbarItems>
+    <ContentPage.BindingContext>
+        <vm:SettingViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <!-- Define the rows for the grid -->
+            <Grid.RowDefinitions>
+                <!-- First row takes flexible space -->
+                <RowDefinition Height="100" />
+                <!-- Second row also takes flexible space -->
+                <RowDefinition Height="*" />
+                <!-- Third row with minimum height (Auto) -->
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- First Row Content (can be anything) -->
+            <Frame Grid.Row="0" VerticalOptions="Center" 
+                   HorizontalOptions="Center">
+                <StackLayout>
+                    <Label Text="{Binding Username}" x:Name="UsernameText" TextColor="Black"/>
+
+                </StackLayout>
+
+            </Frame>
+
+            <!-- Second Row Content -->
+            <StackLayout
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Fill"
+                   Grid.Row="1"
+                   Padding="10,0,10,0">
+                <StackLayout>                 
+                    <Button Text="Feedback"/>
+                    <Button Text="About us" Command="{Binding Site}"/>
+                    <Button Text="Delete Account" BackgroundColor="Red"/>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Third Row Content (Buttons) -->
+            <Grid Grid.Row="2">
+                <!-- Absolute layout to stack buttons on top of each other -->
+                <AbsoluteLayout Margin="0,0,0,30">
+                    <Button Text="Sign in"  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.25, AutoSize, AutoSize"  Command="{Binding SignIn}" x:Name="SignInButton"/>
+                    <Button Text="Logout"  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.75, AutoSize, AutoSize" Clicked="Logout_Clicked" x:Name="Logout" BackgroundColor="Red"/>
+                </AbsoluteLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+
