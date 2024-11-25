@@ -3,9 +3,79 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="KurdishCuisine.Views.Post">
+    <ContentPage.Resources>
+    <Style TargetType="ListView">
+        <Setter Property="HasUnevenRows" Value="False" />
+        <Setter Property="RowHeight" Value="250" />
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="SeparatorVisibility" Value="None"/>
+    </Style>
+</ContentPage.Resources>
+
     <ContentPage.Content>
-        <Grid>
-        </Grid>
+        <StackLayout Spacing="10">
+            <Label Text="Title"/>
+            <Entry/>
+            <Label Text="Description"/>
+            <Entry/>
+
+            <!-- Button to pick a file -->
+            <Button Text="Pick File"
+                    Clicked="OnPickFileButtonClicked"
+                    HorizontalOptions="Center"/>
+
+            <!-- ListView to display selected file(s) -->
+            <ListView x:Name="FilesListView"
+                      IsVisible="False"
+                      ItemSelected="OnFileSelected"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="100" HorizontalOptions="Center">
+                                <!-- Display Image or Video Thumbnail -->
+                                <AbsoluteLayout HeightRequest="200" HorizontalOptions="Center">
+                                    <!-- Display Image or Video Thumbnail with AspectFit to prevent cropping -->
+                                    <Image Source="{Binding FileThumbnail}" 
+                                           Aspect="AspectFill"
+                                           HeightRequest="200"
+                                           WidthRequest="300"
+                                           AbsoluteLayout.LayoutFlags="All"
+                                           AbsoluteLayout.LayoutBounds="0,0,1,1"/>
+
+                                    <!-- Cancel Button with Styling, floating on top of the image -->
+                                    <Button Text="X"
+                                            BackgroundColor="Red"
+                                            TextColor="White"
+                                            FontSize="20"
+                                            WidthRequest="40"
+                                            HeightRequest="40"
+                                            CornerRadius="20"
+                                            Clicked="OnCancelButtonClicked"
+                                            CommandParameter="{Binding FilePath}"
+                                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                                            AbsoluteLayout.LayoutBounds="1,0.001,AutoSize,AutoSize" />
+                                </AbsoluteLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView> 
+
+            <!-- Button to upload the selected file(s) -->
+            <Button Text="Upload Files"
+                    Clicked="OnUploadButtonClicked"
+                    HorizontalOptions="Center"
+                    IsEnabled="False"
+                    x:Name="UploadButton"
+                    />
+
+            <!-- Label to show the upload status -->
+            <Label x:Name="StatusLabel"
+                   Text=""
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
 

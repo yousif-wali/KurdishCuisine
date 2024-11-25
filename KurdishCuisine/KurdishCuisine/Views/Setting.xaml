@@ -41,10 +41,12 @@
                    HorizontalOptions="Fill"
                    Grid.Row="1"
                    Padding="10,0,10,0">
-                <StackLayout>                 
+                <StackLayout>
+                    <Button Text="Tasks (Coming Soon)" IsEnabled="False"/>
+                    <Button Text="Connect Wallet (Coming Soon)" IsEnabled="False"/>
                     <Button Text="Feedback"/>
                     <Button Text="About us" Command="{Binding Site}"/>
-                    <Button Text="Delete Account" BackgroundColor="Red"/>
+                    <Button Text="Delete Account" BackgroundColor="Red" x:Name="DeleteAccountButton"/>
                 </StackLayout>
             </StackLayout>
 

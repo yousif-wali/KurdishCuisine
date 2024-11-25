@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using KurdishCuisine.Models;
-using KurdishCuisine.ViewModels;
+﻿using KurdishCuisine.Models;
 using Xamarin.Forms;
 using KurdishCuisine.Services;
 namespace KurdishCuisine.Views
@@ -18,6 +15,7 @@ namespace KurdishCuisine.Views
         {
             base.OnAppearing();
             SigninButtonAlteration();
+            
         }
 
         protected override void OnDisappearing()
@@ -35,7 +33,10 @@ namespace KurdishCuisine.Views
                 Logout.IsVisible = false;
                 Logout.IsEnabled = false;
 
-                
+                DeleteAccountButton.IsVisible = false;
+                DeleteAccountButton.IsEnabled = false;
+
+
 
                 UsernameText.Text = "";
             }
@@ -47,6 +48,13 @@ namespace KurdishCuisine.Views
                 Logout.IsVisible = true;
                 Logout.IsEnabled = true;
 
+                DeleteAccountButton.IsEnabled = true;
+                DeleteAccountButton.IsVisible = true;
+
+                Logout.BackgroundColor = Color.Red;
+                DeleteAccountButton.BackgroundColor = Color.Red;
+
+
                 UsernameText.Text = CurrentUser.Username;
             }
         }
@@ -57,7 +65,7 @@ namespace KurdishCuisine.Views
             SigninButtonAlteration();
         }
 
-        async void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
+        void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigate.To(new Post());
         }

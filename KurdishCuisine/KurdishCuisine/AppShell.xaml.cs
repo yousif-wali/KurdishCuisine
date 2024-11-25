@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using KurdishCuisine.ViewModels;
-using KurdishCuisine.Views;
-using KurdishCuisine.Models;
+﻿using KurdishCuisine.Views;
 using Xamarin.Forms;
 
 namespace KurdishCuisine

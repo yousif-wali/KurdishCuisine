@@ -2,9 +2,6 @@
 using Xamarin.Forms;
 using KurdishCuisine.Views;
 using System.ComponentModel;
-using KurdishCuisine.Models;
-using Plugin.Toast;
-using Xamarin.CommunityToolkit.Extensions;
 using KurdishCuisine.Services;
 
 namespace KurdishCuisine.ViewModels
@@ -31,7 +28,7 @@ namespace KurdishCuisine.ViewModels
         {
             SignIn = new Command(SignInDirection);
         }
-        private async void SignInDirection()
+        private void SignInDirection()
         {
             // Perform navigation
             Navigate.To(new LoginPage());
